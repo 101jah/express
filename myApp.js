@@ -8,7 +8,7 @@ const home = path.join(__dirname, absolutePath);
 
 // Define a route handler for the root path '/'
 app.get("/", (req, res) => {
-  res.send("home");
+  res.send(home);
 });
 
 module.exports = app;
