@@ -5,8 +5,8 @@ const path = require("path");
 
 home = __dirname + '/relativePath/file.ext'
 
-// Define a route handler for the absolute path
- app.get("/",req,res) {
+// Define a route handler for the absolute pathably
+app.get("/",req,res) =>{
   res.sendFile(home);
-  };
-module.exports = app;
+};
+module.exports = app; 
