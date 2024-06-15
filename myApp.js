@@ -9,5 +9,5 @@ home = __dirname + "/public";
 app.get("/", (req, res) => {
   res.sendFile(home);
 });
-app.use(home, express.static());
+app.use(home, express.static(home));
 module.exports = app;
