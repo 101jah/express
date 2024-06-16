@@ -1,13 +1,17 @@
-let express = require("express");
-let app = express();
-const port = 3000; // or any port number you prefer
+const express = require("express");
+const app = express();
 const path = require("path");
 
-home = __dirname + "/public";
+// Define the absolute path to the assets folder
+const publicPath = path.join(__dirname, "public");
 
-// Define a route handler for the absolute pathably
+// Middleware to serve static files from the /public directory
+app.use("/public", express.static(publicPath));
+
+// Route handler for the root path, rendering index.html from /views
 app.get("/", (req, res) => {
-  res.sendFile(home);
+  res.sendFile(path.join(__dirname, "views", "index.html"));
 });
-app.use(home, express.static(home));
+
+// Exporting the configured Express app
 module.exports = app;
