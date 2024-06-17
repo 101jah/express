@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/now", addTimeMiddleware, (req, res, next) => {
+app.use("/now", addTimeMiddleware, (req, res) => {
   res.join({ time: req.time });
 });
 
