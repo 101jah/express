@@ -53,5 +53,28 @@ app.get("/:word/echo", (req, res) => {
   res.json({ echo: word }); // Respond with a JSON object { echo: word }
 });
 
+// Route handler for GET and POST /name
+app
+  .route("/name")
+  .get((req, res) => {
+    const { first, last } = req.query; // Extract first and last name from query parameters
+
+    // Construct response JSON object
+    const fullName = `${first} ${last}`;
+    const responseObject = { name: fullName };
+
+    res.json(responseObject); // Respond with JSON object { name: 'firstname lastname' }
+  })
+  .post((req, res) => {
+    // Assuming JSON payload like { "first": "firstname", "last": "lastname" }
+    const { first, last } = req.body; // Extract first and last name from JSON body
+
+    // Construct response JSON object
+    const fullName = `${first} ${last}`;
+    const responseObject = { name: fullName };
+
+    res.json(responseObject); // Respond with JSON object { name: 'firstname lastname' }
+  });
+
 // Exporting the configured Express app
 module.exports = app;
