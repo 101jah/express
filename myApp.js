@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 //Route handler for a json response object 
 app.get("/json", (req, res) => {
   const responseObject = {
-    message: "Hello World!"
+    message: "Hello json"
   };
   res.json(responseObject);
 });
