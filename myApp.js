@@ -18,10 +18,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/now", addTimeMiddleware, (req, res) => {
-  res.join({ time: req.time });
-});
-
 // Middleware to serve static files from the /public directory
 app.use("/public", express.static(publicPath));
 
@@ -44,6 +40,11 @@ app.get("/json", (req, res) => {
   };
 
   res.json(responseObject);
+});
+
+// Chain Middleware to Create a Time Server
+app.get("/now", addTimeMiddleware, (req, res) => {
+  res.join({ time: req.time });
 });
 
 // Exporting the configured Express app
