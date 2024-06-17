@@ -7,10 +7,19 @@ const path = require("path");
 // Define the absolute path to the assets folder
 const publicPath = path.join(__dirname, "public");
 
+const addTimeMiddleware = (req, res, next) => {
+  req.time = new Date().toString();
+  next(); // Call next to move to the next middleware or route handler
+};
+
 // Middleware for logging requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.path} - ${req.ip}`);
   next();
+});
+
+app.use("/now", addTimeMiddleware, (req, res, next) => {
+  res.join({ time: req.time });
 });
 
 // Middleware to serve static files from the /public directory
