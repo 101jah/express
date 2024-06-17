@@ -34,17 +34,23 @@ app.get("/json", (req, res) => {
   if (process.env.MESSAGE_STYLE === "uppercase") {
     message = message.toUpperCase();
   }
-
   const responseObject = {
     message: message,
   };
-
   res.json(responseObject);
 });
 
 // Chain Middleware to Create a Time Server
 app.get("/now", addTimeMiddleware, (req, res) => {
+  //Remember to pass the request object as the first argument
+  //Remember the response can be json or any form you want .
   res.json({ time: req.time });
+});
+
+// Route handler for GET /:word/echo
+app.get("/:word/echo", (req, res) => {
+  const { word } = req.params; // Extract the word parameter from req.params
+  res.json({ echo: word }); // Respond with a JSON object { echo: word }
 });
 
 // Exporting the configured Express app
