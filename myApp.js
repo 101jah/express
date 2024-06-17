@@ -28,9 +28,6 @@ app.get("/json", (req, res) => {
     message = message.toUpperCase();
   }
 
-  const responseObject = {
-    message: message
-  };
   res.json(responseObject);
 });
 
