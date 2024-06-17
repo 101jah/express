@@ -13,5 +13,19 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
+
+
+//Route handler for a json response object 
+app.get("/json", (req, res) => {
+  const responseObject = {
+    message: "Hello World!"
+  };
+  res.json(responseObject);
+});
+
+
+
+
+
 // Exporting the configured Express app
 module.exports = app;
