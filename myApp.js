@@ -7,6 +7,12 @@ const path = require("path");
 // Define the absolute path to the assets folder
 const publicPath = path.join(__dirname, "public");
 
+// Middleware for logging requests
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path} - ${req.ip}`);
+  next();
+});
+
 // Middleware to serve static files from the /public directory
 app.use("/public", express.static(publicPath));
 
