@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
-const path = require("path"); //allow path 
-require('dotenv').config(); // adding .env files for api keys and more 
-
+const path = require("path"); //allow path
+require("dotenv").config(); // adding .env files for api keys and more
 
 // Define the absolute path to the assets folder
 const publicPath = path.join(__dirname, "public");
@@ -15,25 +14,19 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
-
-
-//Route handler for a json response object 
+//Route handler for a json response object
 app.get("/json", (req, res) => {
   let responseObject = {
-    "message": "Hello json"
+    message: "Hello json",
   };
 
-  // Checking if the response is a uppercase 
-  if (process.env.MESSAGE_STYLE === 'uppercase') {
+  // Checking if the response is a uppercase
+  if (process.env.MESSAGE_STYLE === "uppercase") {
     message = message.toUpperCase();
   }
 
-  res.json(responseObject);
+  res.json(responseObject.message);
 });
 
-
-
-
-
 // Exporting the configured Express app
-module.exports = app
+module.exports = app;
