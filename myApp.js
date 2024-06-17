@@ -16,14 +16,17 @@ app.get("/", (req, res) => {
 
 //Route handler for a json response object
 app.get("/json", (req, res) => {
-  let responseObject = {
+  let message = {
     message: "Hello json",
   };
 
   // Checking if the response is a uppercase
-  if (process.env.MESSAGE_STYLE === "uppercase") {
+  if (process.env.MESSAGE_STYLE && process.env.MESSAGE_STYLE === "uppercase") {
     message = message.toUpperCase();
   }
+  const responseObject = {
+    message: message,
+  };
 
   res.json(responseObject);
 });
