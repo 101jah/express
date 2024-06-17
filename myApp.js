@@ -25,7 +25,7 @@ app.get("/json", (req, res) => {
     message = message.toUpperCase();
   }
 
-  res.json(responseObject.message);
+  res.json(responseObject);
 });
 
 // Exporting the configured Express app
