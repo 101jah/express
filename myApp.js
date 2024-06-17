@@ -1,5 +1,5 @@
 require("dotenv").config(); // Load environment variables from .env file
-
+const bodyParse = require("body-parser");
 const express = require("express");
 const app = express();
 const path = require("path");
@@ -11,6 +11,8 @@ const addTimeMiddleware = (req, res, next) => {
   req.time = new Date().toString();
   next(); // Call next to move to the next middleware or route handler
 };
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Middleware for logging requests
 app.use((req, res, next) => {
