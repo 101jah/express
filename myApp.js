@@ -55,6 +55,7 @@ app.get("/:word/echo", (req, res) => {
   res.json({ echo: word }); // Respond with a JSON object { echo: word }
 });
 
+app.post("/name", (req, res) => {});
 // Route handler for GET and POST /name
 app
   .route("/name")
@@ -76,6 +77,9 @@ app
     const responseObject = { name: fullName };
 
     res.json(responseObject); // Respond with JSON object { name: 'firstname lastname' }
+
+    var string = req.body.first + " " + req.body.last;
+    res.json({ name: string });
   });
 
 // Exporting the configured Express app
