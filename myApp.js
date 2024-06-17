@@ -44,7 +44,7 @@ app.get("/json", (req, res) => {
 
 // Chain Middleware to Create a Time Server
 app.get("/now", addTimeMiddleware, (req, res) => {
-  res.join({ time: req.time });
+  res.json({ time: req.time });
 });
 
 // Exporting the configured Express app
